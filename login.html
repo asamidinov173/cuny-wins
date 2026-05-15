@@ -3,22 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Faculty Login — CUNY Wins</title>
+  <title>Faculty Login — CUNY 2X Tech - BMCC</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="login.css">
 </head>
 <body>
+
+  <!-- Background orbs -->
+  <div class="login-bg-orb login-bg-orb-1" aria-hidden="true"></div>
+  <div class="login-bg-orb login-bg-orb-2" aria-hidden="true"></div>
+  <div class="login-bg-orb login-bg-orb-3" aria-hidden="true"></div>
 
   <!-- Login Wrapper -->
   <div class="login-wrapper">
 
     <!-- Header -->
     <div class="text-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#5b5bd6" viewBox="0 0 16 16" class="mb-2">
+      <div class="login-eyebrow">
+        <span class="login-dot"></span>
+        Faculty Portal
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#4F46E5" viewBox="0 0 16 16" class="mb-2">
         <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702z"/>
         <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/>
       </svg>
-      <h1 class="login-title">CUNY Wins</h1>
+      <h1 class="login-title">CUNY 2X Tech - BMCC</h1>
       <p class="login-subtitle">Faculty Access Only</p>
     </div>
 
@@ -34,19 +49,19 @@
 
       <!-- Email -->
       <div class="mb-3">
-        <label class="form-label-custom">Email</label>
+        <label class="form-label-custom" for="emailInput">Email</label>
         <input type="email" class="form-input" id="emailInput"
           placeholder="yourname@bmcc.cuny.edu">
       </div>
 
       <!-- Password -->
       <div class="mb-4">
-        <label class="form-label-custom">Password</label>
+        <label class="form-label-custom" for="passwordInput">Password</label>
         <div class="password-wrapper">
           <input type="password" class="form-input" id="passwordInput"
             placeholder="Enter your password">
           <span class="password-toggle" onclick="togglePassword()">
-            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#aaa" viewBox="0 0 16 16">
+            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
               <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
               <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
             </svg>
@@ -58,7 +73,6 @@
       <button class="btn-login" onclick="handleLogin()">
         Login to Dashboard
       </button>
-
     </div>
 
     <!-- Back to Portal -->
@@ -68,9 +82,8 @@
 
   </div>
 
-    <!-- login.html -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="login.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="login.js"></script>
 
 </body>
 </html>

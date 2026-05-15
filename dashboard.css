@@ -1,308 +1,305 @@
 /* ============================================
-   DASHBOARD PAGE
+   DASHBOARD PAGE — Faculty View
+   Light mode, clean data interface
    ============================================ */
 
-   body {
-    background: #f0f2f8;
-    min-height: 100vh;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
-  
-  /* Dark mode toggle */
-  .dark-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: white;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    color: #555;
-    z-index: 100;
-  }
-  
-  .dark-toggle:hover {
-    background: #f0f0ff;
-    color: #5b5bd6;
-  }
-  
-  /* Dashboard Wrapper */
-  .dashboard-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 24px 60px;
-  }
-  
-  /* Header */
-  .dashboard-title {
-    font-size: 28px;
-    font-weight: 800;
-    color: #1a1a2e;
-    margin: 0;
-  }
-  
-  .dashboard-subtitle {
-    font-size: 14px;
-    color: #777;
-    margin: 4px 0 28px;
-  }
-  
-  /* Stat Cards */
-  .stat-card {
-    background: white;
-    border-radius: 12px;
-    padding: 20px 24px;
-    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
-  }
-  
-  .stat-label {
-    font-size: 13px;
-    color: #888;
-    margin: 0;
-    font-weight: 500;
-  }
-  
-  .stat-number {
-    font-size: 32px;
-    font-weight: 800;
-    color: #1a1a2e;
-  }
-  
-  /* Table Card */
-  .table-card {
-    background: white;
-    border-radius: 12px;
-    padding: 28px;
-    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
-  }
-  
-  .table-heading {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1a1a2e;
-    margin-bottom: 4px;
-  }
-  
-  .table-subheading {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 20px;
-  }
-  
-  /* Filter Tabs */
-  .filter-tabs {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  
-  .filter-btn {
-    background: #f1f1f1;
-    border: none;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 13px;
-    color: #555;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  
-  .filter-btn:hover {
-    background: #e0e0f0;
-    color: #5b5bd6;
-  }
-  
-  .filter-btn.active {
-    background: #1a1a2e;
-    color: white;
-  }
-  
-  /* CSV Button */
-  .btn-csv {
-    background: white;
-    color: #1a1a2e;
-    border: 1.5px solid #ddd;
-    padding: 8px 18px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: all 0.2s;
-  }
-  
-  .btn-csv:hover {
-    border-color: #5b5bd6;
-    color: #5b5bd6;
-  }
-  
-  /* Table */
-  .dash-table th {
-    font-size: 13px;
-    font-weight: 600;
-    color: #888;
-    border-bottom: 1px solid #eee;
-    padding: 12px 8px;
-  }
-  
-  .dash-table td {
-    font-size: 14px;
-    color: #333;
-    padding: 14px 8px;
-    vertical-align: middle;
-    border-bottom: 1px solid #f5f5f5;
-  }
-  
-  .table-photo {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .table-link {
-    color: #5b5bd6;
-    text-decoration: underline;
-    font-size: 13px;
-  }
-  
-  .table-link:hover {
-    color: #4444cc;
-  }
-  
-  /* Status Badges */
-  .badge-approved {
-    background: #dcfce7;
-    color: #16a34a;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-  }
-  
-  .badge-pending {
-    background: #fef9c3;
-    color: #ca8a04;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-  }
-  
-  .badge-rejected {
-    background: #fee2e2;
-    color: #dc2626;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-  }
-  
-  /* Action Buttons */
-  .btn-approve {
-    background: #22c55e;
-    color: white;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  
-  .btn-approve:hover {
-    background: #16a34a;
-  }
-  
-  .btn-reject {
-    background: #ef4444;
-    color: white;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  
-  .btn-reject:hover {
-    background: #dc2626;
-  }
-  
-  /* Bottom Navigation */
-  .bottom-nav {
-    text-align: center;
-    padding: 32px 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  
-  .bottom-link {
-    color: #5b5bd6;
-    text-decoration: underline;
-    font-size: 14px;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  
-  .bottom-link:hover {
-    color: #4444cc;
-  }
-  
-  .bottom-divider {
-    color: #aaa;
-    font-size: 14px;
-  }
-  
-  /* ============================================
-     RESPONSIVE — MOBILE
-     ============================================ */
-  @media (max-width: 575px) {
-  
-    .dashboard-wrapper {
-      padding: 24px 16px 40px;
-    }
-  
-    .dashboard-title {
-      font-size: 22px;
-    }
-  
-    .stat-number {
-      font-size: 26px;
-    }
-  
-    .table-card {
-      padding: 20px 16px;
-    }
-  
-    .dash-table th,
-    .dash-table td {
-      font-size: 12px;
-      padding: 10px 6px;
-    }
-  
-    .filter-tabs {
-      width: 100%;
-    }
-  
-    .btn-csv {
-      width: 100%;
-      justify-content: center;
-    }
-  }
-  
-  @media (max-width: 991px) {
-    .dashboard-wrapper {
-      padding: 30px 20px 50px;
-    }
-  }
+:root {
+  --bg:       #FFFFFF;
+  --surface:  #F7F8FF;
+  --s2:       #EEF0FF;
+  --border:   rgba(0,0,0,0.07);
+  --bl:       rgba(0,0,0,0.12);
+  --primary:  #4F46E5;
+  --pri-rgb:  79, 70, 229;
+  --purple:   #7C3AED;
+  --pur-rgb:  124, 58, 237;
+  --text-1:   #0F0F1E;
+  --text-2:   #6B7280;
+  --text-3:   #9CA3AF;
+  --font-d:   'Cormorant Garamond', Georgia, serif;
+  --font-b:   'Plus Jakarta Sans', system-ui, sans-serif;
+  --t:        0.26s cubic-bezier(0.4,0,0.2,1);
+  --shadow-sm:0 2px 8px rgba(0,0,0,0.05);
+  --shadow:   0 4px 18px rgba(0,0,0,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--surface);
+  min-height: 100vh;
+  font-family: var(--font-b);
+  font-size: 14px;
+  color: var(--text-1);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Dashboard Wrapper */
+.dashboard-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+/* Header */
+.dashboard-title {
+  font-family: var(--font-d);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-1);
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+.dashboard-subtitle {
+  font-size: 14px;
+  color: var(--text-2);
+  margin: 4px 0 32px;
+}
+
+/* Stat Cards */
+.stat-card {
+  background: var(--bg);
+  border-radius: 16px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: all var(--t);
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--purple));
+  opacity: 0;
+  transition: opacity var(--t);
+}
+.stat-card:hover {
+  box-shadow: var(--shadow);
+  border-color: rgba(var(--pri-rgb), 0.15);
+}
+.stat-card:hover::before { opacity: 1; }
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-2);
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.stat-number {
+  font-family: var(--font-d);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-1);
+  line-height: 1.1;
+  margin-top: 4px;
+}
+
+/* Table Card */
+.table-card {
+  background: var(--bg);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+.table-heading {
+  font-family: var(--font-d);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-1);
+  margin-bottom: 2px;
+  letter-spacing: -0.2px;
+}
+.table-subheading {
+  font-size: 13px;
+  color: var(--text-2);
+  margin-bottom: 20px;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all var(--t);
+  font-family: var(--font-b);
+}
+.filter-btn:hover {
+  background: var(--s2);
+  color: var(--primary);
+  border-color: rgba(var(--pri-rgb), 0.2);
+}
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--primary), var(--purple));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 2px 10px rgba(var(--pri-rgb), 0.25);
+}
+
+/* CSV Button */
+.btn-csv {
+  background: var(--bg);
+  color: var(--text-1);
+  border: 1.5px solid var(--border);
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-b);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--t);
+}
+.btn-csv:hover {
+  border-color: rgba(var(--pri-rgb), 0.3);
+  color: var(--primary);
+  background: var(--s2);
+}
+
+/* Table */
+.dash-table { width: 100%; border-collapse: collapse; }
+.dash-table th {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-3);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 12px 10px;
+  text-align: left;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.dash-table td {
+  font-size: 14px;
+  color: var(--text-1);
+  padding: 14px 10px;
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.dash-table tbody tr:last-child td { border-bottom: none; }
+.dash-table tbody tr:hover td { background: rgba(var(--pri-rgb), 0.02); }
+
+.table-photo {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(var(--pri-rgb), 0.1);
+}
+.table-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color var(--t);
+}
+.table-link:hover { color: var(--purple); text-decoration: underline; }
+
+/* Status Badges */
+.badge-approved {
+  background: #ECFDF5;
+  color: #065F46;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(16,185,129,0.2);
+}
+.badge-pending {
+  background: #FFFBEB;
+  color: #92400E;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(245,158,11,0.25);
+}
+.badge-rejected {
+  background: #FEF2F2;
+  color: #991B1B;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(239,68,68,0.2);
+}
+
+/* Action Buttons */
+.btn-approve {
+  background: #10B981;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-b);
+  cursor: pointer;
+  transition: all var(--t);
+}
+.btn-approve:hover { background: #059669; transform: translateY(-1px); }
+
+.btn-reject {
+  background: #EF4444;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-b);
+  cursor: pointer;
+  transition: all var(--t);
+}
+.btn-reject:hover { background: #DC2626; transform: translateY(-1px); }
+
+/* Bottom Navigation */
+.bottom-nav {
+  text-align: center;
+  padding: 32px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.bottom-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color var(--t);
+}
+.bottom-link:hover { color: var(--purple); text-decoration: underline; }
+.bottom-divider { color: var(--text-3); font-size: 14px; }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 575px) {
+  .dashboard-wrapper { padding: 24px 16px 40px; }
+  .dashboard-title   { font-size: 24px; }
+  .stat-number       { font-size: 28px; }
+  .table-card        { padding: 20px 16px; }
+  .dash-table th,
+  .dash-table td     { font-size: 12px; padding: 10px 6px; }
+  .filter-tabs       { width: 100%; }
+  .btn-csv           { width: 100%; justify-content: center; }
+}
+@media (max-width: 991px) {
+  .dashboard-wrapper { padding: 30px 20px 50px; }
+}

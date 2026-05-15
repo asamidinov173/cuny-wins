@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Students — CUNY 2X Tech - BMCC</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg" id="mainNavbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <span class="brand-name">CUNY 2X Tech - BMCC</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#graduates-section">Graduates</a></li>
+          <li class="nav-item"><a class="nav-link" href="#students-section">Students</a></li>
+        </ul>
+        <a href="login.html" class="btn-faculty-login">Faculty Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="students-page-hero">
+    <div class="container text-center">
+      <span class="section-eyebrow">CUNY 2X Tech - BMCC</span>
+      <h1 class="students-page-title">Student Achievements</h1>
+      <p class="students-page-sub">Browse all graduates and current students who landed opportunities</p>
+
+      <!-- TWO LARGE TOGGLE BUTTONS -->
+      <div class="toggle-buttons">
+        <button class="toggle-btn active" id="btn-graduates" onclick="showSection('graduates')">
+          🎓 Graduates
+        </button>
+        <button class="toggle-btn" id="btn-students" onclick="showSection('students')">
+          💼 Current Students
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRADUATES SECTION -->
+  <section id="graduates-section" class="all-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Hall of Fame</span>
+        <h2 class="section-title">CUNY Graduates</h2>
+        <p class="section-sub">Celebrating graduates who secured offers and opportunities after graduation</p>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="row g-4" id="allGraduatesGrid">
+        <div class="col-12 text-center py-5">
+          <p class="text-muted">Loading graduates...</p>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-wrapper" id="graduatesPagination"></div>
+    </div>
+  </section>
+
+  <!-- STUDENTS SECTION -->
+  <section id="students-section" class="all-section" style="display:none;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Current Cohort</span>
+        <h2 class="section-title">Current Students</h2>
+        <p class="section-sub">Celebrating current students from all majors who landed internships and opportunities</p>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="row g-4" id="allStudentsGrid">
+        <div class="col-12 text-center py-5">
+          <p class="text-muted">Loading students...</p>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-wrapper" id="studentsPagination"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-main">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5 class="footer-brand">CUNY 2X Tech - BMCC Portal</h5>
+            <p class="footer-desc">A platform for BMCC students to celebrate internships, jobs, and career milestones.</p>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4 offset-lg-1">
+            <h6 class="footer-heading">Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Training</a></li>
+              <li><a href="#">Courses</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h6 class="footer-heading">Services</h6>
+            <ul class="footer-links">
+              <li><a href="#">Job Application</a></li>
+              <li><a href="#">Career Guide</a></li>
+              <li><a href="#">CV Review</a></li>
+              <li><a href="#">Interview Prep</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h6 class="footer-heading">Resources</h6>
+            <ul class="footer-links">
+              <li><a href="#">Resume &amp; Cover Letter</a></li>
+              <li><a href="#">Career Blog</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h6 class="footer-heading">Legal</h6>
+            <ul class="footer-links">
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms &amp; Conditions</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container d-flex justify-content-between align-items-center">
+        <p class="footer-copy mb-0">© 2026 CUNY 2X Tech - BMCC Portal. All rights reserved.</p>
+        <div class="d-flex align-items-center gap-3">
+          <span class="cuny-logo">CUNY 2X Tech</span>
+          <a href="#" class="social-icon" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.633 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+  <script>
+    const API = 'http://127.0.0.1:5000';
+    const PER_PAGE = 9;
+
+    // All data stored here after first fetch
+    let allGraduates = [];
+    let allStudents  = [];
+
+    // Current pages
+    let gradPage    = 1;
+    let studentPage = 1;
+
+    // ============================================
+    // TOGGLE SECTIONS
+    // ============================================
+    function showSection(which) {
+      const gradSection     = document.getElementById('graduates-section');
+      const studentSection  = document.getElementById('students-section');
+      const btnGrad         = document.getElementById('btn-graduates');
+      const btnStudent      = document.getElementById('btn-students');
+
+      if (which === 'graduates') {
+        gradSection.style.display    = 'block';
+        studentSection.style.display = 'none';
+        btnGrad.classList.add('active');
+        btnStudent.classList.remove('active');
+      } else {
+        gradSection.style.display    = 'none';
+        studentSection.style.display = 'block';
+        btnStudent.classList.add('active');
+        btnGrad.classList.remove('active');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ============================================
+    // BUILD CARD HTML
+    // ============================================
+    function buildStudentCard(student, isGraduate = false) {
+      const name     = student['Name']             || 'Student';
+      const company  = student['Company']          || '–';
+      const position = student['Position']         || '–';
+      const date     = student['Start Date']       || '–';
+      const linkedin = student['LinkedIn']         || '#';
+      const type     = student['Achievement Type'] || (isGraduate ? 'Full-Time Job' : 'Internship');
+
+      const cardClass  = isGraduate ? 'graduate-card'       : 'student-card';
+      const topClass   = isGraduate ? 'grad-card-top'       : 'card-top';
+      const badgeClass = isGraduate ? 'badge-graduate'      : 'badge-student';
+      const badgeText  = isGraduate ? '🎓 Graduate'         : '💼 Current Student';
+      const boxClass   = isGraduate ? 'opportunity-box-grad': 'opportunity-box';
+      const infoClass  = isGraduate ? 'card-info-grad'      : 'card-info-student';
+      const iconColor  = isGraduate ? '#7c3aed'             : '#4444cc';
+      const btnClass   = isGraduate ? 'btn-grad'            : 'btn btn-primary';
+      const bgColor    = isGraduate ? '7c3aed'              : '4444cc';
+      const avatar     = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=${bgColor}&color=fff&size=130`;
+
+      return `
+        <div class="col-md-4">
+          <div class="${cardClass}">
+            <div class="${topClass}">
+              <img src="${avatar}" alt="${name}" class="student-photo">
+            </div>
+            <div class="card-bottom">
+              <h5 class="fw-bold">${name}</h5>
+              <span class="${badgeClass}">${badgeText}</span>
+              <div class="${boxClass} mt-3">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="${iconColor}" viewBox="0 0 16 16">
+                    <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702z"/>
+                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/>
+                  </svg>
+                  <small style="font-size:11px;letter-spacing:0.5px;font-weight:700;color:${iconColor};">${type.toUpperCase()}</small>
+                </div>
+                <p class="fw-bold mb-0">${position}</p>
+              </div>
+              <div class="card-info-row ${infoClass} mt-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="${iconColor}" viewBox="0 0 16 16">
+                  <path d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022M6 8.694 1 10.36V15h5zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5z"/>
+                </svg>
+                <span>${company}</span>
+              </div>
+              <div class="card-info-row ${infoClass} mt-2 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="${iconColor}" viewBox="0 0 16 16">
+                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                </svg>
+                <span>${date}</span>
+              </div>
+              <a href="${linkedin}" target="_blank" class="${btnClass} w-100">Connect on LinkedIn</a>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    // ============================================
+    // RENDER PAGE — graduates or students
+    // ============================================
+    function renderPage(data, page, gridId, paginationId, isGraduate) {
+      const grid       = document.getElementById(gridId);
+      const pagination = document.getElementById(paginationId);
+      const totalPages = Math.ceil(data.length / PER_PAGE);
+      const start      = (page - 1) * PER_PAGE;
+      const slice      = data.slice(start, start + PER_PAGE);
+
+      // Render cards
+      grid.innerHTML = '';
+      if (slice.length === 0) {
+        grid.innerHTML = '<div class="col-12 text-center py-5"><p class="text-muted">No entries found.</p></div>';
+        pagination.innerHTML = '';
+        return;
+      }
+      slice.forEach(item => { grid.innerHTML += buildStudentCard(item, isGraduate); });
+
+      // Render pagination
+      if (totalPages <= 1) {
+        pagination.innerHTML = '';
+        return;
+      }
+
+      let pages = '';
+      for (let i = 1; i <= totalPages; i++) {
+        pages += `<button
+          class="page-btn ${i === page ? 'active' : ''}"
+          onclick="${isGraduate ? `goGradPage(${i})` : `goStudentPage(${i})`}">
+          ${i}
+        </button>`;
+      }
+      pagination.innerHTML = pages;
+    }
+
+    // ============================================
+    // PAGINATION HANDLERS
+    // ============================================
+    function goGradPage(page) {
+      gradPage = page;
+      renderPage(allGraduates, gradPage, 'allGraduatesGrid', 'graduatesPagination', true);
+      document.getElementById('graduates-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function goStudentPage(page) {
+      studentPage = page;
+      renderPage(allStudents, studentPage, 'allStudentsGrid', 'studentsPagination', false);
+      document.getElementById('students-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ============================================
+    // FETCH ALL DATA
+    // ============================================
+    async function loadAll() {
+      try {
+        const [gradRes, studentRes] = await Promise.all([
+          fetch(`${API}/graduates`),
+          fetch(`${API}/approved`)
+        ]);
+
+        const gradData    = await gradRes.json();
+        const studentData = await studentRes.json();
+
+        allGraduates = gradData.success    ? gradData.graduates  : [];
+        allStudents  = studentData.success ? studentData.students : [];
+
+        renderPage(allGraduates, gradPage,    'allGraduatesGrid', 'graduatesPagination', true);
+        renderPage(allStudents,  studentPage, 'allStudentsGrid',  'studentsPagination',  false);
+
+      } catch (err) {
+        console.error('Could not load data:', err);
+        document.getElementById('allGraduatesGrid').innerHTML =
+          '<div class="col-12 text-center py-5"><p class="text-muted">Could not load data. Make sure the server is running.</p></div>';
+      }
+    }
+
+    // ============================================
+    // INIT
+    // ============================================
+    document.addEventListener('DOMContentLoaded', loadAll);
+  </script>
+
+</body>
+</html>
