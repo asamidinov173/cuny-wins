@@ -22,25 +22,26 @@ Students submit their career achievements through a form. Faculty reviews and ap
 ---
 
 ## File Structure
-bmcc-achievement-portal/
-├── index.html          → public portal homepage
-├── students.html       → all students and graduates with pagination
-├── submit.html         → student achievement submission form
-├── dashboard.html      → faculty approval dashboard
-├── login.html          → faculty login page
-├── app.js              → frontend JavaScript for index + cards
-├── dashboard.js        → dashboard logic
-├── login.js            → login logic
-├── submit.js           → form submission logic
-├── style.css           → main styles
-├── dashboard.css       → dashboard styles
-├── login.css           → login styles
-├── submit.css          → form styles
-├── server.py           → Flask backend
-├── requirements.txt    → Python dependencies
-├── Procfile            → Render deployment config
-├── credentials.json    → Google API key (NEVER commit this)
-└── README.md           → this file
+
+    bmcc-achievement-portal/
+    ├── index.html          → public portal homepage
+    ├── students.html       → all students and graduates with pagination
+    ├── submit.html         → student achievement submission form
+    ├── dashboard.html      → faculty approval dashboard
+    ├── login.html          → faculty login page
+    ├── app.js              → frontend JavaScript for index + cards
+    ├── dashboard.js        → dashboard logic
+    ├── login.js            → login logic
+    ├── submit.js           → form submission logic
+    ├── style.css           → main styles
+    ├── dashboard.css       → dashboard styles
+    ├── login.css           → login styles
+    ├── submit.css          → form styles
+    ├── server.py           → Flask backend
+    ├── requirements.txt    → Python dependencies
+    ├── Procfile            → Render deployment config
+    ├── credentials.json    → Google API key (NEVER commit this)
+    └── README.md           → this file
 
 ---
 
