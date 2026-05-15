@@ -30,19 +30,6 @@ function animateCounter(el, target, duration = 1400) {
   requestAnimationFrame(step);
 }
 
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el     = entry.target;
-      const target = parseInt(el.dataset.target, 10);
-      animateCounter(el, target);
-      counterObserver.unobserve(el);
-    }
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.metric-number[data-target]').forEach(el => counterObserver.observe(el));
-
 // ============================================
 // NAVBAR — shadow on scroll
 // ============================================
@@ -65,15 +52,15 @@ function buildStudentCard(student, isGraduate = false) {
   const linkedin = student['LinkedIn']         || '#';
   const type     = student['Achievement Type'] || (isGraduate ? 'Full-Time Job' : 'Internship');
 
-  const cardClass  = isGraduate ? 'graduate-card' : 'student-card';
-  const topClass   = isGraduate ? 'grad-card-top'  : 'card-top';
-  const badgeClass = isGraduate ? 'badge-graduate'  : 'badge-student';
-  const badgeText  = isGraduate ? '🎓 Graduate'     : '💼 Current Student';
+  const cardClass  = isGraduate ? 'graduate-card'        : 'student-card';
+  const topClass   = isGraduate ? 'grad-card-top'        : 'card-top';
+  const badgeClass = isGraduate ? 'badge-graduate'       : 'badge-student';
+  const badgeText  = isGraduate ? '🎓 Graduate'          : '💼 Current Student';
   const boxClass   = isGraduate ? 'opportunity-box-grad' : 'opportunity-box';
-  const infoClass  = isGraduate ? 'card-info-grad'  : 'card-info-student';
-  const iconColor  = isGraduate ? '#7c3aed'          : '#4444cc';
-  const btnClass   = isGraduate ? 'btn-grad'         : 'btn btn-primary';
-  const bgColor    = isGraduate ? '7c3aed'           : '4444cc';
+  const infoClass  = isGraduate ? 'card-info-grad'       : 'card-info-student';
+  const iconColor  = isGraduate ? '#7c3aed'              : '#4444cc';
+  const btnClass   = isGraduate ? 'btn-grad'             : 'btn btn-primary';
+  const bgColor    = isGraduate ? '7c3aed'               : '4444cc';
   const avatar     = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=${bgColor}&color=fff&size=130`;
 
   return `
@@ -115,7 +102,6 @@ function buildStudentCard(student, isGraduate = false) {
 
 // ============================================
 // LOAD APPROVED CURRENT STUDENTS — homepage
-// limit=3 shows only 3 newest
 // ============================================
 async function loadApprovedStudents() {
   try {
@@ -136,7 +122,6 @@ async function loadApprovedStudents() {
 
 // ============================================
 // LOAD APPROVED GRADUATES — homepage
-// limit=3 shows only 3 newest
 // ============================================
 async function loadGraduates() {
   try {
@@ -156,9 +141,38 @@ async function loadGraduates() {
 }
 
 // ============================================
+// LOAD METRICS — then animate counters
+// ============================================
+async function loadMetrics() {
+  try {
+    const res  = await fetch(`${API}/metrics`);
+    const data = await res.json();
+    if (!data.success) return;
+
+    const els = document.querySelectorAll('.metric-number[data-target]');
+    if (els[0]) {
+      els[0].setAttribute('data-target', data.totalStudents);
+      animateCounter(els[0], data.totalStudents);
+    }
+    if (els[1]) {
+      els[1].setAttribute('data-target', data.companies);
+      animateCounter(els[1], data.companies);
+    }
+    if (els[2]) {
+      els[2].setAttribute('data-target', data.majors);
+      animateCounter(els[2], data.majors);
+    }
+
+  } catch (err) {
+    console.error('Could not load metrics:', err);
+  }
+}
+
+// ============================================
 // INIT
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
   loadApprovedStudents();
   loadGraduates();
+  loadMetrics();
 });

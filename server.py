@@ -92,13 +92,14 @@ def submit():
         achievement = data.get('achievement', '')
         grad_year   = data.get('gradYear', '')
         photo_url   = data.get('photoUrl', '')
+        major       = data.get('major', '')
         timestamp   = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         sheet = get_sheet()
         sheet.append_row([
             timestamp, name, email, emplid, company,
             position, start_date, linkedin,
-            achievement, grad_year, photo_url, 'Pending'
+            achievement, grad_year, photo_url, 'Pending', major
         ])
 
         return jsonify({"success": True, "message": "Achievement submitted!"})
@@ -144,7 +145,7 @@ def update_status():
         return jsonify({"success": False, "message": str(e)})
 
 # ============================================
-# GET APPROVED CURRENT STUDENTS (index.html)
+# GET APPROVED CURRENT STUDENTS
 # Newest first — limit 3 for homepage
 # ============================================
 @app.route('/approved', methods=['GET'])
@@ -159,7 +160,7 @@ def get_approved():
             and row.get('Achievement Type') != 'Full-Time Job'
         ]
 
-        students.reverse()  # newest first
+        students.reverse()
 
         limit = request.args.get('limit')
         if limit:
@@ -171,7 +172,7 @@ def get_approved():
         return jsonify({"success": False, "message": str(e)})
 
 # ============================================
-# GET APPROVED GRADUATES (index.html)
+# GET APPROVED GRADUATES
 # Newest first — limit 3 for homepage
 # ============================================
 @app.route('/graduates', methods=['GET'])
@@ -186,13 +187,38 @@ def get_graduates():
             and row.get('Achievement Type') == 'Full-Time Job'
         ]
 
-        graduates.reverse()  # newest first
+        graduates.reverse()
 
         limit = request.args.get('limit')
         if limit:
             graduates = graduates[:int(limit)]
 
         return jsonify({"success": True, "graduates": graduates})
+
+    except Exception as e:
+        return jsonify({"success": False, "message": str(e)})
+
+# ============================================
+# GET METRICS
+# ============================================
+@app.route('/metrics', methods=['GET'])
+def get_metrics():
+    try:
+        sheet = get_sheet()
+        rows  = sheet.get_all_records()
+
+        approved = [row for row in rows if row.get('Status') == 'Approved']
+
+        total_students = len(approved)
+        companies      = len(set(row.get('Company', '') for row in approved if row.get('Company')))
+        majors         = len(set(row.get('Major', '') for row in approved if row.get('Major')))
+
+        return jsonify({
+            "success":       True,
+            "totalStudents": total_students,
+            "companies":     companies,
+            "majors":        majors
+        })
 
     except Exception as e:
         return jsonify({"success": False, "message": str(e)})
