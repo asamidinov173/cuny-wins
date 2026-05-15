@@ -2,7 +2,8 @@
 
 A full-stack student achievement portal for BMCC students from all majors to submit and showcase their internships, jobs, and career accomplishments.
 
-Built by Alikhan Samidinov — Software Development Specialist Intern, CUNY 2X Tech (Spring 2026)
+🌐 Live Portal: https://cuny2xtech-platform.vercel.app
+⚙️ Backend API: https://cuny2xtech-platform.onrender.com
 
 ---
 
@@ -17,41 +18,45 @@ Students submit their career achievements through a form. Faculty reviews and ap
 - Frontend: HTML, CSS, JavaScript, Bootstrap 5
 - Backend: Python, Flask
 - Database: Google Sheets (via Google Sheets API)
-- Deployment: Vercel (frontend) + Render (backend)
+- Frontend Deployment: Vercel
+- Backend Deployment: Render
 
 ---
 
 ## File Structure
 
-    bmcc-achievement-portal/
-    ├── index.html          → public portal homepage
-    ├── students.html       → all students and graduates with pagination
-    ├── submit.html         → student achievement submission form
-    ├── dashboard.html      → faculty approval dashboard
-    ├── login.html          → faculty login page
-    ├── app.js              → frontend JavaScript for index + cards
-    ├── dashboard.js        → dashboard logic
-    ├── login.js            → login logic
-    ├── submit.js           → form submission logic
-    ├── style.css           → main styles
-    ├── dashboard.css       → dashboard styles
-    ├── login.css           → login styles
-    ├── submit.css          → form styles
-    ├── server.py           → Flask backend
-    ├── requirements.txt    → Python dependencies
-    ├── Procfile            → Render deployment config
-    ├── credentials.json    → Google API key (NEVER commit this)
-    └── README.md           → this file
+    cuny2xtech-platform/
+    ├── frontend/
+    │   ├── index.html          → public portal homepage
+    │   ├── students.html       → all students and graduates with pagination
+    │   ├── submit.html         → student achievement submission form
+    │   ├── dashboard.html      → faculty approval dashboard
+    │   ├── login.html          → faculty login page
+    │   ├── app.js              → frontend JavaScript for index + cards
+    │   ├── dashboard.js        → dashboard logic
+    │   ├── login.js            → login logic
+    │   ├── submit.js           → form submission logic
+    │   ├── style.css           → main styles
+    │   ├── dashboard.css       → dashboard styles
+    │   ├── login.css           → login styles
+    │   ├── submit.css          → form styles
+    │   └── assets/             → images and icons
+    └── backend/
+        ├── server.py           → Flask backend
+        ├── requirements.txt    → Python dependencies
+        ├── Procfile            → Render deployment config
+        └── credentials.json   → Google API key (NEVER commit this)
 
 ---
 
 ## How to Run Locally
 
 1. Clone the repo
-2. Add `credentials.json` to the project root (get from TeLisa or Google Cloud Console)
+2. Add `credentials.json` to the `backend/` folder (get from your supervisor or Google Cloud Console)
 3. Install dependencies:
 
 ```bash
+cd backend
 pip3 install -r requirements.txt
 ```
 
@@ -61,7 +66,7 @@ pip3 install -r requirements.txt
 python3 server.py
 ```
 
-5. Open `index.html` with Live Server in VS Code or Cursor
+5. Open `frontend/index.html` with Live Server in VS Code or Cursor
 
 ---
 
@@ -73,13 +78,13 @@ Column headers in row 1 must be exactly:
 
 | A | B | C | D | E | F | G | H | I | J | K | L | M |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Timestamp | Name | Email | EMPLID | Company | Position | Start Date | LinkedIn | Achievement Type | Graduation Year | Photo URL | Status | Major |
+| Timestamp | Name | Email | EMPLID | Company | Position | Start Date | LinkedIn | Achievement Type | Graduation Year | Photo URL | Status | 
 
 ---
 
 ## Faculty Login
 
-Login credentials are hardcoded in `server.py` under `ALLOWED_USERS`. To add a new faculty account just add their email and password to that dictionary.
+Login credentials are hardcoded in `server.py` under `ALLOWED_USERS`. To add or update faculty accounts edit that dictionary directly.
 
 ---
 
@@ -88,7 +93,7 @@ Login credentials are hardcoded in `server.py` under `ALLOWED_USERS`. To add a n
 Currently photos use an initials avatar fallback via ui-avatars.com. To enable real photo uploads integrate Cloudinary:
 
 1. Create a Cloudinary account under a department email
-2. Add `CLOUDINARY_URL` to environment variables
+2. Add `CLOUDINARY_URL` to environment variables on Render
 3. Update `submit.js` to upload to Cloudinary and save the returned URL
 4. Update `server.py` to store the URL in the Photo URL column
 
@@ -96,25 +101,17 @@ Currently photos use an initials avatar fallback via ui-avatars.com. To enable r
 
 ## Deployment
 
-- Frontend deployed on Vercel
-- Backend deployed on Render
-- After any backend change restart the Render service
-- After any frontend change push to GitHub — Vercel auto-deploys
+- Frontend deployed on Vercel — auto-deploys on every push to `main`
+- Backend deployed on Render — redeploy manually after backend changes
+- The Render free tier sleeps after 15 minutes of inactivity — first request may take 30 seconds to wake up
 
 ---
 
 ## For the Next Intern
 
 - Never commit `credentials.json` to GitHub — it contains secret API keys
-- To add a new faculty login edit `ALLOWED_USERS` in `server.py`
-- To change the Google Sheet update `SHEET_ID` in `server.py`
-- The Render free tier sleeps after 15 minutes — first request may be slow
-- Cloudinary setup is the next priority for real photo uploads
+- To add a new faculty login edit `ALLOWED_USERS` in `backend/server.py`
+- To change the Google Sheet update `SHEET_ID` in `backend/server.py`
+- Cloudinary photo uploads is the next priority
 - Consider adding a Major dropdown to the submit form for the Majors Represented metric
-
----
-
-## Contact
-
-Built during CUNY 2X Tech internship Spring 2026.
-For questions contact TeLisa Daughry at CUNY 2X Tech.
+- After any backend change go to Render dashboard and trigger a manual redeploy
