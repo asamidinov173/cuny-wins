@@ -32,8 +32,9 @@ def get_sheet():
 # ALLOWED FACULTY USERS
 # ============================================
 ALLOWED_USERS = {
-    "alikhan@bmcc.cuny.edu":    "Bmcc2026!",
-    "supervisor@bmcc.cuny.edu": "Bmcc2026!"
+    "alikhan@bmcc.cuny.edu":    "Intern2026!",
+    "tdaughtry@bmcc.cuny.edu": "Cuny2xTech2026!",
+    "tfairley@bmcc.cuny.edu":    "Cuny2xTech2026!"
 }
 
 # ============================================

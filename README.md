@@ -81,10 +81,6 @@ Column headers in row 1 must be exactly:
 
 Login credentials are hardcoded in `server.py` under `ALLOWED_USERS`. To add a new faculty account just add their email and password to that dictionary.
 
-Current accounts:
-- `alikhan@bmcc.cuny.edu`
-- `supervisor@bmcc.cuny.edu`
-
 ---
 
 ## Photo Uploads
