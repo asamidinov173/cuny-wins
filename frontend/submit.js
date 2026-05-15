@@ -48,7 +48,7 @@ document.getElementById('achievementForm').addEventListener('submit', async func
   submitBtn.disabled = true;
 
   try {
-    const response = await fetch('http://127.0.0.1:5000/submit', {
+    const response = await fetch('https://cuny2xtech-platform.onrender.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
