@@ -11,7 +11,13 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = "cuny_wins_secret_2026"
-CORS(app, supports_credentials=True, origins=["http://127.0.0.1:5500", "http://localhost:5500", "http://127.0.0.1:5501", "http://localhost:5501"])
+CORS(app, supports_credentials=True, origins=[
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    "http://127.0.0.1:5501",
+    "http://localhost:5501",
+    "https://cuny2xtech-platform.vercel.app"
+])
 
 # ============================================
 # GOOGLE SHEETS SETUP
